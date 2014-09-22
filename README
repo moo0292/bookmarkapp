@@ -1,4 +1,4 @@
-zlist
+Bookmark App
 
 A hierarchical list storage and retrieval program,
 with a notion of time built in, making storage is immutable.
@@ -14,7 +14,7 @@ Sections, links, their descriptions, notes; in the future possibly more.
 
 Storage
 
-All nodes keep the following properties:
+All nodes can keep the following properties:
 
  *  uid
  *  stamp
@@ -44,10 +44,10 @@ the data itself through a thin API.
 
 Inspiration
 
- *  Hierachical Notebook (hnb.sourceforge.net)
  *  Github Gist (gist.github.com)
- *  Project Augment (dougengelbart.org)
+ *  Hierachical Notebook (hnb.sourceforge.net)
  *  Sir Trevor JS (madebymany.github.io/sir-trevor-js/)
+ *  Project Augment (dougengelbart.org)
 
 And to a lesser degree:
 
