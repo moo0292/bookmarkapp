@@ -1,0 +1,83 @@
+zlist
+
+A little experiment - a hierarchical list storage and retrieval program,
+which uses the filesystem as its database.
+This is intended mainly for bookmarks, and for lightweight notes,
+although it may work well for other things.
+
+The beauty of this system will be that it is possible to
+to express links, their descriptions, sections, and general
+notes with only one type of data object.
+
+The structure is very simple, everything in zlist is an item,
+each item made of up to four parts:
+
+ *  Address
+ *  Hyperlink
+ *  Title
+ *  Description
+
+With the address being the only required part.
+
+These are all stored in a single folder, with the address
+being the filename, which is made up of one or more segments,
+dot seperated, with .i appended to the end of each filename,
+meaning "item".
+
+An example of how a listing of the items/ folder may look:
+
+  1.i
+  1.1.i
+  1.1.1.i
+  1.2.i
+  1.3.i
+  2.i
+  2.1.i
+
+Where 1.i may be Google.com, 1.1.i may be Google Docs,
+and 1.1.1.i may be a Google Doc you like. And so on.
+
+Internally, each item file just contains the lines,
+one each for hyperlink, title, and description.
+
+A possible downside to this approach, and perhaps part
+of what makes this interesting, is that this would be
+difficult to manage by hand, and would instead be managed
+with utilities that achieve simple operations.
+
+ *  Insert      (insert a new item at any point)
+ *  Append      (append an item to the end of a list)
+ *  Update      (change the contents of an item)
+ *  Move        (move an item to a different place)
+ *  Delete      (delete an item)
+
+This is made more challenging because, with the exception 
+of Append and Update, the operations often require shuffling
+around the other items. However appending is useful,
+because you don't have to just append to the end of the
+top level of the list, but can append to any sub-level.
+Further, shuffling around lower levels of the list does
+not affect the top.
+
+
+Search
+
+Once the list becomes large enough, searching will become
+very useful. The simplest means would be to use the grep
+utility to search through the items/ folder.
+
+Later on it may become useful to augment or replace
+this with something that is able to handle close matches,
+of possibly misspelled or related words.
+
+
+Versioning
+
+I find versioning to be helpful in everything that I do.
+One way I am toying with versioning for this project is to
+create a log using the five operations I mentioned before
+that can be replayed, or reversed.
+
+Reversing operations can be done by keeping in mind that
+the opposite of Insert/Append is Delete, and so on.
+

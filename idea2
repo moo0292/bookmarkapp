@@ -1,0 +1,40 @@
+zlist
+
+A little experiment - a hierarchical list storage and retrieval program,
+which uses the filesystem as its database.
+This is intended mainly for bookmarks, and for lightweight notes,
+although it may work well for other things.
+
+The beauty of this system will be that it is possible to
+to express links, their descriptions, sections, and general
+notes with only one type of data object.
+
+The structure is very simple, everything in zlist is an item,
+each item made of up to four parts:
+
+ *  GUID (required)
+ *  Mod time (required)
+ *  Hyperlink
+ *  Title
+ *  Description
+
+
+Storage
+
+All we need for this approach is two directories storing JSON files:
+
+    nodes/
+    tree/
+
+Nodes are individual objects or items, stored in a file
+with the GUID as the name, followed by a checksum, which functionally
+can be considered its version number.
+
+The tree folder is the entire structure of the of the tree of data.
+
+
+Access
+
+We will access this through an Angular.js frontend, which will get
+the data itself through a thin API.
+
