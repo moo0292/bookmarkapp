@@ -1,0 +1,64 @@
+zlist
+
+A hierarchical list storage and retrieval program,
+with a notion of time built in, making storage is immutable.
+(Meaning, it has built-in version control.)
+
+Although a system like this is really general enough to be used for many things,
+I am designing this for bookmarks and lightweight notes.
+
+The beauty of this system is that there is only one data object,
+yet it will be able to express a range of different elements:
+Sections, links, their descriptions, notes; in the future possibly more.
+
+
+Storage
+
+All nodes keep the following properties:
+
+ *  uid
+ *  stamp
+ *  title
+ *  description
+ *  href
+
+And, if applicable;
+
+ *  parent
+ *  children
+
+We store all nodes inside a single folder call "nodes/",
+where they keep these properties in JSON.
+
+Each node gets its own subdirectory titled with the uid,
+and inside there is a json file for every revision.
+
+The hierarchy is formed using the parent/child relationships.
+
+
+UI
+
+We will access this through an Angular.js frontend, which will get
+the data itself through a thin API.
+
+
+Inspiration
+
+ *  Hierachical Notebook (hnb.sourceforge.net)
+ *  Github Gist (gist.github.com)
+ *  Project Augment (dougengelbart.org)
+ *  Sir Trevor JS (madebymany.github.io/sir-trevor-js/)
+
+And to a lesser degree:
+
+ *  WikiWikiWeb (c2.com/cgi/wiki)
+ *  Leo Editor (leoeditor.com)
+ *  Draft (draftin.com)
+ *  Hypertext (stack.nl/~boch/hyper)
+ *  Hashids (hashids.org)
+ *  Project Xanadu (xanadu.com)
+
+
+I think it should actually be called "Aldrich" or "Eldridge".
+This is nice, because it means "old" (because these are old ideas),
+but just sounds like a slightly hip, but alse quirky, name.
